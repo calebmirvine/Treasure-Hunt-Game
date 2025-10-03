@@ -4,7 +4,7 @@ from Player import Player
 
 #Initialize Board and Player
 
-b = Board(3, '3')
+b = Board(4, '4')
 p1 = Player('One')
 
 def runGame():

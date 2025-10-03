@@ -13,6 +13,12 @@ class Player:
         :param score: Initial score of the individual
         :type score: int
         """
+
+        if type(name) != str:
+            raise ValueError("name must be a string")
+        if name.strip() == "":
+            raise ValueError("name must not be empty")
+
         self.name = name
         self.score = 0
         self.get_score()
@@ -27,10 +33,13 @@ class Player:
         :type new_score: int
         :return: None
         """
-        if new_score  > 0:
-            self.score += new_score
-        else:
-            print("\033[31mNo score added.\033[0m")
+        if type(new_score) != int:
+            raise ValueError("score must be an int")
+        if not new_score  >= 0:
+            raise ValueError("score must be >= to 0")
+        self.score += new_score
+
+
 
 
     def get_score(self) -> int:

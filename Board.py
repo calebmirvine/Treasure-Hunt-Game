@@ -16,9 +16,7 @@ class Board:
         if n < 2: raise ValueError("n must not be less than 2")
         if not t.isdigit() or int(t) <= 0: raise ValueError("t must be digit greater 0")
         if int(t) <= 0 or int(t) > n: raise ValueError("Treasure t length cant be greater than n board length")
-        if (n * n) < sum([num for num in range(int(t) + 1)]): raise ValueError(
-            "Not Enough Board Spaces for t placement")
-
+        if (n * n) < sum([num for num in range(int(t) + 1)]): raise ValueError("Not Enough Board Spaces for t placement")
         self.n = n
         self.t = t
         self.board = [['-' for _ in range(n)] for _ in range(self.n)]
@@ -53,25 +51,14 @@ class Board:
                 positions = []
 
                 for _ in range(treasureCount):
-                    # """
                     # Avoid going out of bounds by wrapping around
-                    # e.g., going left from column 0 wraps to the last column
-                    # example: if temp_row = -1 and n = 5, then temp_row becomes 4
-                    #
-                    # n is the count of rows/columns
-                    # """
-                    if temp_row < 0:
-                        temp_row = self.n - 1
                     if temp_row >= self.n:
                         temp_row = 0
-                    #
-                    if temp_col < 0:
-                        temp_col = self.n - 1
+
                     if temp_col >= self.n:
                         temp_col = 0
 
-                    # If board position is already occupied, break
-                    # Avoiding collisions
+                    # If board position is already occupied, break to advoid collisions
                     if self.board[temp_row][temp_col] != '-':
                         # Clear positions list and break
                         break
@@ -104,13 +91,12 @@ class Board:
         if row < 0 or row >= self.n or col < 0 or col >= self.n:
             raise ValueError("Row and Column must be between 0 and n-1")
 
-
         value = self.board[row][col]
         self.board[row][col] = '-'
         if value != '-':
             return int(value)
         else:
-            #Zero points for empty tile
+            # Zero points for empty tile
             return 0
 
     def __str__(self):
