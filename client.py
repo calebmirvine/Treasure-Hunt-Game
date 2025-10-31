@@ -9,7 +9,8 @@ from network_functions import (
     receive_decoded_string,
     is_empty_buffer,
     send_row_col,
-    score_from_byte
+    get_player1_score,
+    get_player2_score
 )
 
 def client_program() -> None:
@@ -33,6 +34,9 @@ def client_program() -> None:
                     if is_empty_buffer(resp):
                         print("Empty buffer response...")
                     score_data = unpack("!H", resp)[0]
-                    print("Your Current Score |", score_from_byte(score_data))
+                    if name == "One":
+                        print("Your Current Score |", get_player1_score(score_data))
+                    elif name == "Two":
+                        print("Your Current Score |", get_player2_score(score_data))
 
 client_program()

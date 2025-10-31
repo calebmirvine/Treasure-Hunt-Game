@@ -21,7 +21,10 @@ def byte_segment_to_space(data: int) -> tuple[int, int]:
 def score_into_byte(score: int) -> int:
     return score & 0b1111111
 
-def score_from_byte(byte: int) -> int:
+def get_player1_score(byte: int) -> int:
+    return byte & 0b1111111
+
+def get_player2_score(byte: int) -> int:
     return (byte & 0b11111110000000) >> 7
 
 def receive(sc: socket, size: int) -> bytes:
