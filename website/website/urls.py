@@ -15,8 +15,21 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
+from rest_framework import routers
+from game import views
+
+"""
+This code specifies the URL path for the API. This was the final step that completes the building of the API.
+"""
+router = routers.DefaultRouter()
+router.register(r'tiles', views.TileView, 'tile')
+router.register(r'players', views.PlayerView, 'player')
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', include('game.urls')),
+    path('game/', include('game.urls')),
+    path('api/', include(router.urls)),
+
 ]
