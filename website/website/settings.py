@@ -21,12 +21,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-0c(@taut&#hkg2*rj@t@c6hsctj+m#=*v$fwjphx#8j=c=3aq8'
+SECRET_KEY = 'tyK^.WN5RQc]64p9;Y4~Xz1/]n:vU([.$0zyAYVo8:^#[JmOf6'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = 'RENDER' not in environ
 
-ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
+ALLOWED_HOSTS = []
 RENDER_EXTERNAL_HOSTNAME = environ.get('RENDER_EXTERNAL_HOSTNAME')
 if RENDER_EXTERNAL_HOSTNAME:
     ALLOWED_HOSTS.append(RENDER_EXTERNAL_HOSTNAME)
@@ -149,4 +149,4 @@ if not DEBUG:
 
 if not DEBUG:
     STATIC_ROOT = path.join(BASE_DIR, 'staticfiles')
-    STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+    GTATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
