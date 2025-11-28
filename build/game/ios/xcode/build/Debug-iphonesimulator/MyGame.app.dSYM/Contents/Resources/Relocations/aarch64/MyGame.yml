@@ -1,0 +1,11 @@
+---
+triple:          'arm64-apple-darwin'
+binary-path:     '/Users/kale/Library/CloudStorage/OneDrive-CamosunCollege/Camosun/~Fall 2025/ICS 226 - Network Programming/Game Project/226_game/build/game/ios/xcode/build/Debug-iphonesimulator/MyGame.app/MyGame'
+relocations:
+  - { offset: 0x882EE, size: 0x8, addend: 0x0, symName: _main, symObjAddr: 0x0, symBinAddr: 0x100000AE0, symSize: 0x1650 }
+  - { offset: 0x88316, size: 0x8, addend: 0x0, symName: _main, symObjAddr: 0x0, symBinAddr: 0x100000AE0, symSize: 0x1650 }
+  - { offset: 0x8850C, size: 0x8, addend: 0x0, symName: _crash_dialog, symObjAddr: 0x1650, symBinAddr: 0x100002130, symSize: 0x1E0 }
+  - { offset: 0x88566, size: 0x8, addend: 0x0, symName: _PyType_HasFeature, symObjAddr: 0x1830, symBinAddr: 0x100002310, symSize: 0x30 }
+  - { offset: 0x885B2, size: 0x8, addend: 0x0, symName: _Py_TYPE, symObjAddr: 0x1860, symBinAddr: 0x100002340, symSize: 0x18 }
+  - { offset: 0x88617, size: 0x8, addend: 0x0, symName: _format_traceback, symObjAddr: 0x1878, symBinAddr: 0x100002358, symSize: 0x310 }
+...

@@ -1,0 +1,557 @@
+Date/Time:       2025-11-27 12:21:11 
+Command line:    /Users/kale/.local/share/virtualenvs/226_game-ghc88pkf/bin/briefcase build ios
+
+OS Release:      Darwin 25.1.0
+OS Version:      Darwin Kernel Version 25.1.0: Mon Oct 20 19:32:56 PDT 2025; root:xnu-12377.41.6~2/RELEASE_ARM64_T8132
+Architecture:    arm64
+Platform:        macOS-26.1-arm64-arm-64bit-Mach-O
+
+Python exe:      /Users/kale/.local/share/virtualenvs/226_game-ghc88pkf/bin/python
+Python version:  3.13.7 (main, Aug 14 2025, 11:12:11) [Clang 17.0.0 (clang-1700.0.13.3)]
+Virtual env:     True
+Conda env:       False
+
+Briefcase:       0.3.25
+Target platform: iOS
+Target format:   Xcode
+
+Environment Variables:
+	ANTIGRAVITY_CLI_ALIAS=agy
+	BUNDLED_DEBUGPY_PATH=/Users/kale/.antigravity/extensions/ms-python.debugpy-2025.14.1-darwin-arm64/bundled/libs/debugpy
+	COLORTERM=truecolor
+	COMMAND_MODE=unix2003
+	GIT_ASKPASS=********************
+	HOME=/Users/kale
+	HOMEBREW_CELLAR=/opt/homebrew/Cellar
+	HOMEBREW_PREFIX=/opt/homebrew
+	HOMEBREW_REPOSITORY=/opt/homebrew
+	INFOPATH=/opt/homebrew/share/info:/opt/homebrew/share/info:
+	LANG=C.UTF-8
+	LOGNAME=kale
+	MallocNanoZone=0
+	OLDPWD=/Users/kale/Library/CloudStorage/OneDrive-CamosunCollege/Camosun/~Fall 2025/ICS 226 - Network Programming/Game Project/226_game
+	ORIGINAL_XDG_CURRENT_DESKTOP=undefined
+	OSLogRateLimit=64
+	PATH=/Users/kale/.local/share/virtualenvs/226_game-ghc88pkf/bin:/Users/kale/.antigravity/antigravity/bin:/Users/kale/.pixi/bin:/Users/kale/.antigravity/antigravity/bin:/Users/kale/.pixi/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin:/opt/pmk/env/global/bin:/Library/Apple/usr/bin:/Applications/Wireshark.app/Contents/MacOS:/Applications/nmap.app/Contents/Resources/bin:/Applications/ncat.app/Contents/Resources/bin:/Applications/nping.app/Contents/Resources/bin:/Applications/zenmap.app/Contents/Resources/bin:/Users/kale/.antigravity/antigravity/bin:/Users/kale/.pixi/bin:/Users/kale/Library/Application Support/JetBrains/Toolbox/scripts:/Users/kale/.local/bin:/Users/kale/.antigravity/extensions/ms-python.debugpy-2025.14.1-darwin-arm64/bundled/scripts/noConfigScripts:/Users/kale/Library/Application Support/JetBrains/Toolbox/scripts:/Users/kale/.local/bin:/Users/kale/.local/bin
+	PIPENV_ACTIVE=1
+	PIP_DISABLE_PIP_VERSION_CHECK=1
+	PIP_PYTHON_PATH=/Users/kale/.local/share/virtualenvs/226_game-ghc88pkf/bin/python
+	PS1=(226_game) %n@%m %1~ %# 
+	PWD=/Users/kale/Library/CloudStorage/OneDrive-CamosunCollege/Camosun/~Fall 2025/ICS 226 - Network Programming/Game Project/226_game
+	PYDEVD_DISABLE_FILE_VALIDATION=1
+	PYTHONDONTWRITEBYTECODE=1
+	PYTHONSTARTUP=/Users/kale/Library/Application Support/Antigravity/User/workspaceStorage/f81a35f49a81eeb667e3a41729edcb98/ms-python.python/pythonrc.py
+	PYTHON_BASIC_REPL=1
+	SHELL=/bin/zsh
+	SHLVL=2
+	SSH_AUTH_SOCK=/private/tmp/com.apple.launchd.9aAZ3nY5sX/Listeners
+	TERM=xterm-256color
+	TERM_PROGRAM=vscode
+	TERM_PROGRAM_VERSION=1.104.0
+	TMPDIR=/var/folders/zh/wh7l2g4n6g318smxwtcnf0b00000gq/T/
+	USER=kale
+	USER_ZDOTDIR=/Users/kale
+	VIRTUAL_ENV=/Users/kale/.local/share/virtualenvs/226_game-ghc88pkf
+	VIRTUAL_ENV_PROMPT=226_game
+	VSCODE_DEBUGPY_ADAPTER_ENDPOINTS=/Users/kale/.antigravity/extensions/ms-python.debugpy-2025.14.1-darwin-arm64/.noConfigDebugAdapterEndpoints/endpoint-9feb3739d7fd0e8a.txt
+	VSCODE_GIT_ASKPASS_EXTRA_ARGS=********************
+	VSCODE_GIT_ASKPASS_MAIN=********************
+	VSCODE_GIT_ASKPASS_NODE=********************
+	VSCODE_GIT_IPC_HANDLE=/var/folders/zh/wh7l2g4n6g318smxwtcnf0b00000gq/T/vscode-git-2ab964d0c9.sock
+	VSCODE_INJECTION=1
+	VSCODE_PROFILE_INITIALIZED=1
+	VSCODE_PYTHON_AUTOACTIVATE_GUARD=1
+	XPC_FLAGS=0x0
+	XPC_SERVICE_NAME=0
+	ZDOTDIR=/Users/kale
+	_=/Users/kale/.local/share/virtualenvs/226_game-ghc88pkf/bin/briefcase
+	__CFBundleIdentifier=com.google.antigravity
+	__CF_USER_TEXT_ENCODING=0x1F7:0x0:0x52
+
+pyproject.toml:
+# This project was generated with 0.3.25 using template: https://github.com/beeware/briefcase-template @ v0.3.25
+[tool.briefcase]
+project_name = "MyGame"
+bundle = "com.example"
+version = "0.0.1"
+url = "https://example.com/game"
+license.file = "LICENSE"
+author = "Caleb Irvine"
+author_email = "irvinecaleb1@gmail.com"
+
+[tool.briefcase.app.game]
+formal_name = "MyGame"
+description = "My first application"
+long_description = """More details about the app should go here.
+"""
+icon = "website/game/static/assets/icon"
+sources = [
+    "website/game",
+    "website/website",
+]
+test_sources = [
+    "tests",
+]
+
+requires = [
+    "django~=5.1",
+    "django-cors-headers",
+    "djangorestframework",
+]
+test_requires = [
+    "pytest",
+]
+
+[tool.briefcase.app.game.macOS]
+universal_build = true
+requires = [
+    "toga-cocoa~=0.5.0",
+    "std-nslog~=1.0.3",
+]
+
+[tool.briefcase.app.game.linux]
+requires = [
+    "toga-gtk~=0.5.0",
+    # PyGObject 3.52.1 enforces a requirement on libgirepository-2.0-dev. This library
+    # isn't available on Debian 12/Ubuntu 22.04. If you don't need to support those (or
+    # older) releases, you can remove this version pin. See beeware/toga#3143.
+    "pygobject < 3.52.1",
+]
+
+[tool.briefcase.app.game.linux.system.debian]
+system_requires = [
+    # Needed to compile pycairo wheel
+    "libcairo2-dev",
+    # One of the following two packages are needed to compile PyGObject wheel. If you
+    # remove the pygobject pin in the requires list, you should also change to the
+    # version 2.0 of the girepository library. See beeware/toga#3143.
+    "libgirepository1.0-dev",
+    # "libgirepository-2.0-dev",
+]
+
+system_runtime_requires = [
+    # Needed to provide GTK and its GI bindings
+    "gir1.2-gtk-3.0",
+    # One of the following two packages are needed to use PyGObject at runtime. If you
+    # remove the pygobject pin in the requires list, you should also change to the
+    # version 2.0 of the girepository library. See beeware/toga#3143.
+    "libgirepository-1.0-1",
+    # "libgirepository-2.0-0",
+    # Dependencies that GTK looks for at runtime
+    "libcanberra-gtk3-module",
+    # Needed to provide WebKit2 at runtime
+    # Note: Debian 11 requires gir1.2-webkit2-4.0 instead
+    # "gir1.2-webkit2-4.1",
+]
+
+[tool.briefcase.app.game.linux.system.rhel]
+system_requires = [
+    # Needed to compile pycairo wheel
+    "cairo-gobject-devel",
+    # Needed to compile PyGObject wheel
+    "gobject-introspection-devel",
+]
+
+system_runtime_requires = [
+    # Needed to support Python bindings to GTK
+    "gobject-introspection",
+    # Needed to provide GTK
+    "gtk3",
+    # Dependencies that GTK looks for at runtime
+    "libcanberra-gtk3",
+    # Needed to provide WebKit2 at runtime
+    # "webkit2gtk3",
+]
+
+[tool.briefcase.app.game.linux.system.suse]
+system_requires = [
+    # Needed to compile pycairo wheel
+    "cairo-devel",
+    # Needed to compile PyGObject wheel
+    "gobject-introspection-devel",
+]
+
+system_runtime_requires = [
+    # Needed to provide GTK
+    "gtk3",
+    # Needed to support Python bindings to GTK
+    "gobject-introspection", "typelib(Gtk) = 3.0",
+    # Dependencies that GTK looks for at runtime
+    "libcanberra-gtk3-module",
+    # Needed to provide WebKit2 at runtime
+    # "libwebkit2gtk3", "typelib(WebKit2)",
+]
+
+[tool.briefcase.app.game.linux.system.arch]
+system_requires = [
+    # Needed to compile pycairo wheel
+    "cairo",
+    # Needed to compile PyGObject wheel
+    "gobject-introspection",
+    # Runtime dependencies that need to exist so that the
+    # Arch package passes final validation.
+    # Needed to provide GTK
+    "gtk3",
+    # Dependencies that GTK looks for at runtime
+    "libcanberra",
+    # Needed to provide WebKit2
+    # "webkit2gtk",
+]
+
+system_runtime_requires = [
+    # Needed to provide GTK
+    "gtk3",
+    # Needed to provide PyGObject bindings
+    "gobject-introspection-runtime",
+    # Dependencies that GTK looks for at runtime
+    "libcanberra",
+    # Needed to provide WebKit2 at runtime
+    # "webkit2gtk",
+]
+
+[tool.briefcase.app.game.linux.appimage]
+manylinux = "manylinux_2_28"
+
+system_requires = [
+    # Needed to compile pycairo wheel
+    "cairo-gobject-devel",
+    # Needed to compile PyGObject wheel
+    "gobject-introspection-devel",
+    # Needed to provide GTK
+    "gtk3-devel",
+    # Dependencies that GTK looks for at runtime, that need to be
+    # in the build environment to be picked up by linuxdeploy
+    "libcanberra-gtk3",
+    "PackageKit-gtk3-module",
+    "gvfs-client",
+]
+
+linuxdeploy_plugins = [
+    "DEPLOY_GTK_VERSION=3 gtk",
+]
+
+[tool.briefcase.app.game.linux.flatpak]
+flatpak_runtime = "org.gnome.Platform"
+flatpak_runtime_version = "48"
+flatpak_sdk = "org.gnome.Sdk"
+
+[tool.briefcase.app.game.windows]
+requires = [
+    "toga-winforms~=0.5.0",
+]
+
+# Mobile deployments
+[tool.briefcase.app.game.iOS]
+requires = [
+    "toga-iOS~=0.5.0",
+    "std-nslog~=1.0.3",
+]
+
+[tool.briefcase.app.game.android]
+requires = [
+    "toga-android~=0.5.0",
+]
+
+base_theme = "Theme.MaterialComponents.Light.DarkActionBar"
+
+build_gradle_dependencies = [
+    "com.google.android.material:material:1.12.0",
+    # Needed for DetailedList
+    # "androidx.swiperefreshlayout:swiperefreshlayout:1.1.0",
+    # Needed for MapView
+    # "org.osmdroid:osmdroid-android:6.1.20",
+]
+
+# Web deployments
+[tool.briefcase.app.game.web]
+requires = [
+    "toga-web~=0.5.0",
+]
+style_framework = "Shoelace v2.3"
+
+Briefcase Log:
+[12:21:02]                                                                                                                                                         subprocess.py:838
+           >>> Running Command:                                                                                                                                    subprocess.py:838
+           >>>     xcode-select -p                                                                                                                                 subprocess.py:838
+           >>> Working Directory:                                                                                                                                  subprocess.py:838
+           >>>     /Users/kale/Library/CloudStorage/OneDrive-CamosunCollege/Camosun/~Fall 2025/ICS 226 - Network Programming/Game Project/226_game                 subprocess.py:838
+           >>> Command Output:                                                                                                                                     subprocess.py:838
+           >>>     /Applications/Xcode.app/Contents/Developer                                                                                                      subprocess.py:838
+           >>> Return code: 0                                                                                                                                      subprocess.py:838
+                                                                                                                                                                   subprocess.py:838
+                                                                                                                                                                   subprocess.py:838
+           >>> Running Command:                                                                                                                                    subprocess.py:838
+           >>>     xcodebuild -version                                                                                                                             subprocess.py:838
+           >>> Working Directory:                                                                                                                                  subprocess.py:838
+           >>>     /Users/kale/Library/CloudStorage/OneDrive-CamosunCollege/Camosun/~Fall 2025/ICS 226 - Network Programming/Game Project/226_game                 subprocess.py:838
+[12:21:03] >>> Command Output:                                                                                                                                     subprocess.py:838
+           >>>     Xcode 26.1.1                                                                                                                                    subprocess.py:838
+           >>>     Build version 17B100                                                                                                                            subprocess.py:838
+           >>> Return code: 0                                                                                                                                      subprocess.py:838
+                                                                                                                                                                   subprocess.py:838
+                                                                                                                                                                   subprocess.py:838
+           >>> Running Command:                                                                                                                                    subprocess.py:838
+           >>>     xcode-select --install                                                                                                                          subprocess.py:838
+           >>> Working Directory:                                                                                                                                  subprocess.py:838
+           >>>     /Users/kale/Library/CloudStorage/OneDrive-CamosunCollege/Camosun/~Fall 2025/ICS 226 - Network Programming/Game Project/226_game                 subprocess.py:838
+           >>> Command Output:                                                                                                                                     subprocess.py:838
+           >>>     xcode-select: note: Command line tools are already installed. Use "Software Update" in System Settings or the softwareupdate command line       subprocess.py:838
+           interface to install updates                                                                                                                                             
+           >>> Return code: 1                                                                                                                                      subprocess.py:838
+                                                                                                                                                                   subprocess.py:838
+                                                                                                                                                                   subprocess.py:838
+           >>> Running Command:                                                                                                                                    subprocess.py:838
+           >>>     /usr/bin/clang --version                                                                                                                        subprocess.py:838
+           >>> Working Directory:                                                                                                                                  subprocess.py:838
+           >>>     /Users/kale/Library/CloudStorage/OneDrive-CamosunCollege/Camosun/~Fall 2025/ICS 226 - Network Programming/Game Project/226_game                 subprocess.py:838
+           >>> Command Output:                                                                                                                                     subprocess.py:838
+           >>>     Apple clang version 17.0.0 (clang-1700.4.4.1)                                                                                                   subprocess.py:838
+           >>>     Target: arm64-apple-darwin25.1.0                                                                                                                subprocess.py:838
+           >>>     Thread model: posix                                                                                                                             subprocess.py:838
+           >>>     InstalledDir: /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin                                            subprocess.py:838
+           >>> Return code: 0                                                                                                                                      subprocess.py:838
+                                                                                                                                                                   subprocess.py:838
+                                                                                                                                                                        xcode.py:473
+           [game] Updating app metadata...                                                                                                                              xcode.py:473
+           Setting main module... started                                                                                                                               xcode.py:455
+           Setting main module... done                                                                                                                                  xcode.py:455
+                                                                                                                                                                        xcode.py:476
+           [game] Building Xcode project...                                                                                                                             xcode.py:476
+           Building... started                                                                                                                                          xcode.py:477
+                                                                                                                                                                   subprocess.py:838
+           >>> Running Command:                                                                                                                                    subprocess.py:838
+           >>>     xcodebuild build -project '/Users/kale/Library/CloudStorage/OneDrive-CamosunCollege/Camosun/~Fall 2025/ICS 226 - Network Programming/Game       subprocess.py:838
+           Project/226_game/build/game/ios/xcode/MyGame.xcodeproj' -configuration Debug -arch arm64 -sdk iphonesimulator -quiet                                                     
+           >>> Working Directory:                                                                                                                                  subprocess.py:838
+           >>>     /Users/kale/Library/CloudStorage/OneDrive-CamosunCollege/Camosun/~Fall 2025/ICS 226 - Network Programming/Game Project/226_game                 subprocess.py:838
+[12:21:10] /Users/kale/Library/CloudStorage/OneDrive-CamosunCollege/Camosun/~Fall 2025/ICS 226 - Network Programming/Game                                          subprocess.py:195
+           Project/226_game/build/game/ios/xcode/build/Debug-iphonesimulator/MyGame.app: resource fork, Finder information, or similar detritus not allowed                         
+           Command CodeSign failed with a nonzero exit code                                                                                                        subprocess.py:195
+           note: Run script build phase 'Sign Python Binary Modules' will be run during every build because the option to run the script phase "Based on           subprocess.py:195
+           dependency analysis" is unchecked. (in target 'MyGame' from project 'MyGame')                                                                                            
+           note: Run script build phase 'Install target specific Python modules' will be run during every build because the option to run the script phase "Based  subprocess.py:195
+           on dependency analysis" is unchecked. (in target 'MyGame' from project 'MyGame')                                                                                         
+           ** BUILD FAILED **                                                                                                                                      subprocess.py:195
+                                                                                                                                                                   subprocess.py:195
+[12:21:11] >>> Return code: 65                                                                                                                                     subprocess.py:838
+                                                                                                                                                                   subprocess.py:838
+           Building... errored                                                                                                                                          xcode.py:477
+                                                                                                                                                                      __main__.py:42
+           Unable to build app game.                                                                                                                                  __main__.py:43
+           Saving log... started                                                                                                                                      console.py:438
+
+Main thread traceback:
+╭─────────────────────────────────────────────────────────────────────── Traceback (most recent call last) ────────────────────────────────────────────────────────────────────────╮
+│ /Users/kale/.local/share/virtualenvs/226_game-ghc88pkf/lib/python3.13/site-packages/briefcase/platforms/iOS/xcode.py:479 in build_app                                            │
+│                                                                                                                                                                                  │
+│   476 │   │   self.console.info("Building Xcode project...", prefix=app.app_name)                                                                                                │
+│   477 │   │   with self.console.wait_bar("Building..."):                                                                                                                         │
+│   478 │   │   │   try:                                                                                                                                                           │
+│ ❱ 479 │   │   │   │   self.tools.subprocess.run(                                                                                                                                 │
+│   480 │   │   │   │   │   [                                                                                                                                                      │
+│   481 │   │   │   │   │   │   "xcodebuild",                                                                                                                                      │
+│   482 │   │   │   │   │   │   "build",                                                                                                                                           │
+│                                                                                                                                                                                  │
+│ ╭────────────────────────────────────── locals ───────────────────────────────────────╮                                                                                          │
+│ │    app = <com.example.game v0.0.1 AppConfig>                                        │                                                                                          │
+│ │ kwargs = {}                                                                         │                                                                                          │
+│ │   self = <briefcase.platforms.iOS.xcode.iOSXcodeBuildCommand object at 0x10aee4440> │                                                                                          │
+│ ╰─────────────────────────────────────────────────────────────────────────────────────╯                                                                                          │
+│                                                                                                                                                                                  │
+│ /Users/kale/.local/share/virtualenvs/226_game-ghc88pkf/lib/python3.13/site-packages/briefcase/integrations/subprocess.py:144 in inner                                            │
+│                                                                                                                                                                                  │
+│   141 │   │   │   with sub.tools.console.release_console_control():                                                                                                              │
+│   142 │   │   │   │   return sub_method(sub, args, *wrapped_args, **wrapped_kwargs)                                                                                              │
+│   143 │   │   else:                                                                                                                                                              │
+│ ❱ 144 │   │   │   return sub_method(sub, args, *wrapped_args, **wrapped_kwargs)                                                                                                  │
+│   145 │                                                                                                                                                                          │
+│   146 │   return inner                                                                                                                                                           │
+│   147                                                                                                                                                                            │
+│                                                                                                                                                                                  │
+│ ╭─────────────────────────────────────────────────────────────────────────────────── locals ───────────────────────────────────────────────────────────────────────────────────╮ │
+│ │                    args = [                                                                                                                                                  │ │
+│ │                           │   'xcodebuild',                                                                                                                                  │ │
+│ │                           │   'build',                                                                                                                                       │ │
+│ │                           │   '-project',                                                                                                                                    │ │
+│ │                           │   PosixPath('/Users/kale/Library/CloudStorage/OneDrive-CamosunCollege/Camosun/~Fall 2025/ICS 226 - Network Programming/Game                      │ │
+│ │                           Project/226_game/build/game/ios/xcode/MyGame.xcodeproj'),                                                                                          │ │
+│ │                           │   '-configuration',                                                                                                                              │ │
+│ │                           │   'Debug',                                                                                                                                       │ │
+│ │                           │   '-arch',                                                                                                                                       │ │
+│ │                           │   'arm64',                                                                                                                                       │ │
+│ │                           │   '-sdk',                                                                                                                                        │ │
+│ │                           │   'iphonesimulator',                                                                                                                             │ │
+│ │                           │   ... +1                                                                                                                                         │ │
+│ │                           ]                                                                                                                                                  │ │
+│ │ remove_dynamic_elements = False                                                                                                                                              │ │
+│ │                     sub = <briefcase.integrations.subprocess.Subprocess object at 0x10aee5e80>                                                                               │ │
+│ │            wrapped_args = ()                                                                                                                                                 │ │
+│ │          wrapped_kwargs = {'check': True, 'filter_func': <briefcase.platforms.macOS.filters.XcodeBuildFilter object at 0x10aee57f0>}                                         │ │
+│ ╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯ │
+│                                                                                                                                                                                  │
+│ /Users/kale/.local/share/virtualenvs/226_game-ghc88pkf/lib/python3.13/site-packages/briefcase/integrations/subprocess.py:539 in run                                              │
+│                                                                                                                                                                                  │
+│   536 │   │   # caller sets stream_output=False, then ensure_console_is_safe() will                                                                                              │
+│   537 │   │   # disable any dynamic console elements while the command runs.                                                                                                     │
+│   538 │   │   if stream_output:                                                                                                                                                  │
+│ ❱ 539 │   │   │   return self._run_and_stream_output(args, filter_func=filter_func, **kwargs)                                                                                    │
+│   540 │   │                                                                                                                                                                      │
+│   541 │   │   # Can't filter non-streamed output.                                                                                                                                │
+│   542 │   │   if filter_func:                                                                                                                                                    │
+│                                                                                                                                                                                  │
+│ ╭─────────────────────────────────────────────────────────────────────────────────── locals ───────────────────────────────────────────────────────────────────────────────────╮ │
+│ │          args = [                                                                                                                                                            │ │
+│ │                 │   'xcodebuild',                                                                                                                                            │ │
+│ │                 │   'build',                                                                                                                                                 │ │
+│ │                 │   '-project',                                                                                                                                              │ │
+│ │                 │   PosixPath('/Users/kale/Library/CloudStorage/OneDrive-CamosunCollege/Camosun/~Fall 2025/ICS 226 - Network Programming/Game                                │ │
+│ │                 Project/226_game/build/game/ios/xcode/MyGame.xcodeproj'),                                                                                                    │ │
+│ │                 │   '-configuration',                                                                                                                                        │ │
+│ │                 │   'Debug',                                                                                                                                                 │ │
+│ │                 │   '-arch',                                                                                                                                                 │ │
+│ │                 │   'arm64',                                                                                                                                                 │ │
+│ │                 │   '-sdk',                                                                                                                                                  │ │
+│ │                 │   'iphonesimulator',                                                                                                                                       │ │
+│ │                 │   ... +1                                                                                                                                                   │ │
+│ │                 ]                                                                                                                                                            │ │
+│ │   filter_func = <briefcase.platforms.macOS.filters.XcodeBuildFilter object at 0x10aee57f0>                                                                                   │ │
+│ │        kwargs = {'check': True}                                                                                                                                              │ │
+│ │          self = <briefcase.integrations.subprocess.Subprocess object at 0x10aee5e80>                                                                                         │ │
+│ │ stream_output = True                                                                                                                                                         │ │
+│ ╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯ │
+│                                                                                                                                                                                  │
+│ /Users/kale/.local/share/virtualenvs/226_game-ghc88pkf/lib/python3.13/site-packages/briefcase/integrations/subprocess.py:615 in _run_and_stream_output                           │
+│                                                                                                                                                                                  │
+│   612 │   │   self._log_return_code(return_code)                                                                                                                                 │
+│   613 │   │                                                                                                                                                                      │
+│   614 │   │   if check and return_code:                                                                                                                                          │
+│ ❱ 615 │   │   │   raise subprocess.CalledProcessError(return_code, args, stderr=stderr)                                                                                          │
+│   616 │   │                                                                                                                                                                      │
+│   617 │   │   return subprocess.CompletedProcess(args, return_code, stderr=stderr)                                                                                               │
+│   618                                                                                                                                                                            │
+│                                                                                                                                                                                  │
+│ ╭─────────────────────────────────────────────────────────────────────────────────── locals ───────────────────────────────────────────────────────────────────────────────────╮ │
+│ │        args = [                                                                                                                                                              │ │
+│ │               │   'xcodebuild',                                                                                                                                              │ │
+│ │               │   'build',                                                                                                                                                   │ │
+│ │               │   '-project',                                                                                                                                                │ │
+│ │               │   PosixPath('/Users/kale/Library/CloudStorage/OneDrive-CamosunCollege/Camosun/~Fall 2025/ICS 226 - Network Programming/Game                                  │ │
+│ │               Project/226_game/build/game/ios/xcode/MyGame.xcodeproj'),                                                                                                      │ │
+│ │               │   '-configuration',                                                                                                                                          │ │
+│ │               │   'Debug',                                                                                                                                                   │ │
+│ │               │   '-arch',                                                                                                                                                   │ │
+│ │               │   'arm64',                                                                                                                                                   │ │
+│ │               │   '-sdk',                                                                                                                                                    │ │
+│ │               │   'iphonesimulator',                                                                                                                                         │ │
+│ │               │   ... +1                                                                                                                                                     │ │
+│ │               ]                                                                                                                                                              │ │
+│ │       check = True                                                                                                                                                           │ │
+│ │ filter_func = <briefcase.platforms.macOS.filters.XcodeBuildFilter object at 0x10aee57f0>                                                                                     │ │
+│ │      kwargs = {'stdout': -1, 'stderr': -2, 'bufsize': 1}                                                                                                                     │ │
+│ │     process = <Popen: returncode: 65 args: ['xcodebuild', 'build', '-project', '/Users/kal...>                                                                               │ │
+│ │ return_code = 65                                                                                                                                                             │ │
+│ │        self = <briefcase.integrations.subprocess.Subprocess object at 0x10aee5e80>                                                                                           │ │
+│ │      stderr = None                                                                                                                                                           │ │
+│ ╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯ │
+╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+CalledProcessError: Command '['xcodebuild', 'build', '-project', PosixPath('/Users/kale/Library/CloudStorage/OneDrive-CamosunCollege/Camosun/~Fall 2025/ICS 226 - Network Programming/Game Project/226_game/build/game/ios/xcode/MyGame.xcodeproj'), '-configuration', 'Debug', '-arch', 'arm64', '-sdk', 'iphonesimulator', '-quiet']' returned non-zero exit status 65.
+
+The above exception was the direct cause of the following exception:
+
+╭─────────────────────────────────────────────────────────────────────── Traceback (most recent call last) ────────────────────────────────────────────────────────────────────────╮
+│ /Users/kale/.local/share/virtualenvs/226_game-ghc88pkf/lib/python3.13/site-packages/briefcase/__main__.py:27 in main                                                             │
+│                                                                                                                                                                                  │
+│   24 │   │   │   Path.cwd() / "pyproject.toml",                                                                                                                                  │
+│   25 │   │   │   overrides=overrides,                                                                                                                                            │
+│   26 │   │   )                                                                                                                                                                   │
+│ ❱ 27 │   │   command(**options)                                                                                                                                                  │
+│   28 │   except HelpText as e:                                                                                                                                                   │
+│   29 │   │   console.info()                                                                                                                                                      │
+│   30 │   │   console.info(str(e))                                                                                                                                                │
+│                                                                                                                                                                                  │
+│ ╭────────────────────────────────────────── locals ──────────────────────────────────────────╮                                                                                   │
+│ │       command = <briefcase.platforms.iOS.xcode.iOSXcodeBuildCommand object at 0x10aee4440> │                                                                                   │
+│ │       console = <briefcase.console.Console object at 0x10ad02a50>                          │                                                                                   │
+│ │             e = BriefcaseCommandError('Unable to build app game.')                         │                                                                                   │
+│ │ extra_cmdline = []                                                                         │                                                                                   │
+│ │       options = {                                                                          │                                                                                   │
+│ │                 │   'update': False,                                                       │                                                                                   │
+│ │                 │   'update_requirements': False,                                          │                                                                                   │
+│ │                 │   'update_support': False,                                               │                                                                                   │
+│ │                 │   'update_stub': False,                                                  │                                                                                   │
+│ │                 │   'update_resources': False,                                             │                                                                                   │
+│ │                 │   'no_update': False,                                                    │                                                                                   │
+│ │                 │   'test_mode': False                                                     │                                                                                   │
+│ │                 }                                                                          │                                                                                   │
+│ │     overrides = {}                                                                         │                                                                                   │
+│ │        result = 200                                                                        │                                                                                   │
+│ ╰────────────────────────────────────────────────────────────────────────────────────────────╯                                                                                   │
+│                                                                                                                                                                                  │
+│ /Users/kale/.local/share/virtualenvs/226_game-ghc88pkf/lib/python3.13/site-packages/briefcase/commands/build.py:154 in __call__                                                  │
+│                                                                                                                                                                                  │
+│   151 │   │                                                                                                                                                                      │
+│   152 │   │   state = None                                                                                                                                                       │
+│   153 │   │   for _, app_obj in sorted(apps_to_build.items()):                                                                                                                   │
+│ ❱ 154 │   │   │   state = self._build_app(                                                                                                                                       │
+│   155 │   │   │   │   app_obj,                                                                                                                                                   │
+│   156 │   │   │   │   update=update,                                                                                                                                             │
+│   157 │   │   │   │   update_requirements=update_requirements,                                                                                                                   │
+│                                                                                                                                                                                  │
+│ ╭───────────────────────────────────────────── locals ─────────────────────────────────────────────╮                                                                             │
+│ │                   _ = 'game'                                                                     │                                                                             │
+│ │                 app = None                                                                       │                                                                             │
+│ │            app_name = None                                                                       │                                                                             │
+│ │             app_obj = <com.example.game v0.0.1 AppConfig>                                        │                                                                             │
+│ │       apps_to_build = {'game': <com.example.game v0.0.1 AppConfig>}                              │                                                                             │
+│ │           no_update = False                                                                      │                                                                             │
+│ │             options = {}                                                                         │                                                                             │
+│ │                self = <briefcase.platforms.iOS.xcode.iOSXcodeBuildCommand object at 0x10aee4440> │                                                                             │
+│ │               state = None                                                                       │                                                                             │
+│ │           test_mode = False                                                                      │                                                                             │
+│ │              update = False                                                                      │                                                                             │
+│ │ update_requirements = False                                                                      │                                                                             │
+│ │    update_resources = False                                                                      │                                                                             │
+│ │         update_stub = False                                                                      │                                                                             │
+│ │      update_support = False                                                                      │                                                                             │
+│ ╰──────────────────────────────────────────────────────────────────────────────────────────────────╯                                                                             │
+│                                                                                                                                                                                  │
+│ /Users/kale/.local/share/virtualenvs/226_game-ghc88pkf/lib/python3.13/site-packages/briefcase/commands/build.py:90 in _build_app                                                 │
+│                                                                                                                                                                                  │
+│    87 │   │                                                                                                                                                                      │
+│    88 │   │   self.verify_app(app)                                                                                                                                               │
+│    89 │   │                                                                                                                                                                      │
+│ ❱  90 │   │   state = self.build_app(app, **full_options(state, options))                                                                                                        │
+│    91 │   │                                                                                                                                                                      │
+│    92 │   │   qualifier = " (test mode)" if app.test_mode else ""                                                                                                                │
+│    93 │   │   self.console.info(                                                                                                                                                 │
+│                                                                                                                                                                                  │
+│ ╭───────────────────────────────────────────── locals ─────────────────────────────────────────────╮                                                                             │
+│ │                 app = <com.example.game v0.0.1 AppConfig>                                        │                                                                             │
+│ │           no_update = False                                                                      │                                                                             │
+│ │             options = {}                                                                         │                                                                             │
+│ │                self = <briefcase.platforms.iOS.xcode.iOSXcodeBuildCommand object at 0x10aee4440> │                                                                             │
+│ │               state = None                                                                       │                                                                             │
+│ │              update = False                                                                      │                                                                             │
+│ │ update_requirements = False                                                                      │                                                                             │
+│ │    update_resources = False                                                                      │                                                                             │
+│ │         update_stub = False                                                                      │                                                                             │
+│ │      update_support = False                                                                      │                                                                             │
+│ ╰──────────────────────────────────────────────────────────────────────────────────────────────────╯                                                                             │
+│                                                                                                                                                                                  │
+│ /Users/kale/.local/share/virtualenvs/226_game-ghc88pkf/lib/python3.13/site-packages/briefcase/platforms/iOS/xcode.py:499 in build_app                                            │
+│                                                                                                                                                                                  │
+│   496 │   │   │   │   │   ),                                                                                                                                                     │
+│   497 │   │   │   │   )                                                                                                                                                          │
+│   498 │   │   │   except subprocess.CalledProcessError as e:                                                                                                                     │
+│ ❱ 499 │   │   │   │   raise BriefcaseCommandError(                                                                                                                               │
+│   500 │   │   │   │   │   f"Unable to build app {app.app_name}."                                                                                                                 │
+│   501 │   │   │   │   ) from e                                                                                                                                                   │
+│   502                                                                                                                                                                            │
+│                                                                                                                                                                                  │
+│ ╭────────────────────────────────────── locals ───────────────────────────────────────╮                                                                                          │
+│ │    app = <com.example.game v0.0.1 AppConfig>                                        │                                                                                          │
+│ │ kwargs = {}                                                                         │                                                                                          │
+│ │   self = <briefcase.platforms.iOS.xcode.iOSXcodeBuildCommand object at 0x10aee4440> │                                                                                          │
+│ ╰─────────────────────────────────────────────────────────────────────────────────────╯                                                                                          │
+╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+BriefcaseCommandError: Unable to build app game.

@@ -1,0 +1,385 @@
+Date/Time:       2025-11-26 23:50:22 
+Command line:    /Users/kale/.local/share/virtualenvs/226_game-ghc88pkf/bin/briefcase dev
+
+OS Release:      Darwin 25.1.0
+OS Version:      Darwin Kernel Version 25.1.0: Mon Oct 20 19:32:56 PDT 2025; root:xnu-12377.41.6~2/RELEASE_ARM64_T8132
+Architecture:    arm64
+Platform:        macOS-26.1-arm64-arm-64bit-Mach-O
+
+Python exe:      /Users/kale/.local/share/virtualenvs/226_game-ghc88pkf/bin/python
+Python version:  3.13.7 (main, Aug 14 2025, 11:12:11) [Clang 17.0.0 (clang-1700.0.13.3)]
+Virtual env:     True
+Conda env:       False
+
+Briefcase:       0.3.25
+Target platform: macOS
+Target format:   app
+
+Environment Variables:
+	ANTIGRAVITY_CLI_ALIAS=agy
+	COLORTERM=truecolor
+	COMMAND_MODE=unix2003
+	GIT_ASKPASS=********************
+	HOME=/Users/kale
+	HOMEBREW_CELLAR=/opt/homebrew/Cellar
+	HOMEBREW_PREFIX=/opt/homebrew
+	HOMEBREW_REPOSITORY=/opt/homebrew
+	INFOPATH=/opt/homebrew/share/info:/opt/homebrew/share/info:
+	LANG=C.UTF-8
+	LOGNAME=kale
+	MallocNanoZone=0
+	OLDPWD=/Users/kale/Library/CloudStorage/OneDrive-CamosunCollege/Camosun/~Fall 2025/ICS 226 - Network Programming/Game Project/226_game
+	ORIGINAL_XDG_CURRENT_DESKTOP=undefined
+	OSLogRateLimit=64
+	PATH=/Users/kale/.local/share/virtualenvs/226_game-ghc88pkf/bin:/Users/kale/.antigravity/antigravity/bin:/Users/kale/.pixi/bin:/Users/kale/.antigravity/antigravity/bin:/Users/kale/.pixi/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin:/opt/pmk/env/global/bin:/Library/Apple/usr/bin:/Applications/Wireshark.app/Contents/MacOS:/Applications/nmap.app/Contents/Resources/bin:/Applications/ncat.app/Contents/Resources/bin:/Applications/nping.app/Contents/Resources/bin:/Applications/zenmap.app/Contents/Resources/bin:/Users/kale/.antigravity/antigravity/bin:/Users/kale/.pixi/bin:/Users/kale/Library/Application Support/JetBrains/Toolbox/scripts:/Users/kale/.local/bin:/Users/kale/Library/Application Support/JetBrains/Toolbox/scripts:/Users/kale/.local/bin:/Users/kale/.local/bin
+	PIPENV_ACTIVE=1
+	PIP_DISABLE_PIP_VERSION_CHECK=1
+	PIP_PYTHON_PATH=/Users/kale/.local/share/virtualenvs/226_game-ghc88pkf/bin/python
+	PS1=(226_game) %n@%m %1~ %# 
+	PWD=/Users/kale/Library/CloudStorage/OneDrive-CamosunCollege/Camosun/~Fall 2025/ICS 226 - Network Programming/Game Project/226_game
+	PYTHONDONTWRITEBYTECODE=1
+	PYTHONSTARTUP=/Users/kale/Library/Application Support/Antigravity/User/workspaceStorage/f81a35f49a81eeb667e3a41729edcb98/ms-python.python/pythonrc.py
+	PYTHON_BASIC_REPL=1
+	SHELL=/bin/zsh
+	SHLVL=2
+	SSH_AUTH_SOCK=/private/tmp/com.apple.launchd.9aAZ3nY5sX/Listeners
+	TERM=xterm-256color
+	TERM_PROGRAM=vscode
+	TERM_PROGRAM_VERSION=1.104.0
+	TMPDIR=/var/folders/zh/wh7l2g4n6g318smxwtcnf0b00000gq/T/
+	USER=kale
+	USER_ZDOTDIR=/Users/kale
+	VIRTUAL_ENV=/Users/kale/.local/share/virtualenvs/226_game-ghc88pkf
+	VIRTUAL_ENV_PROMPT=226_game
+	VSCODE_GIT_ASKPASS_EXTRA_ARGS=********************
+	VSCODE_GIT_ASKPASS_MAIN=********************
+	VSCODE_GIT_ASKPASS_NODE=********************
+	VSCODE_GIT_IPC_HANDLE=/var/folders/zh/wh7l2g4n6g318smxwtcnf0b00000gq/T/vscode-git-2ab964d0c9.sock
+	VSCODE_INJECTION=1
+	VSCODE_PROFILE_INITIALIZED=1
+	VSCODE_PYTHON_AUTOACTIVATE_GUARD=1
+	XPC_FLAGS=0x0
+	XPC_SERVICE_NAME=0
+	ZDOTDIR=/Users/kale
+	_=/Users/kale/.local/share/virtualenvs/226_game-ghc88pkf/bin/briefcase
+	__CFBundleIdentifier=com.google.antigravity
+	__CF_USER_TEXT_ENCODING=0x1F7:0x0:0x52
+
+pyproject.toml:
+# This project was generated with 0.3.25 using template: https://github.com/beeware/briefcase-template @ v0.3.25
+[tool.briefcase]
+project_name = "MyGame"
+bundle = "com.example"
+version = "0.0.1"
+url = "https://example.com/game"
+license.file = "LICENSE"
+author = "Caleb Irvine"
+author_email = "irvinecaleb1@gmail.com"
+
+[tool.briefcase.app.game]
+formal_name = "MyGame"
+description = "My first application"
+long_description = """More details about the app should go here.
+"""
+sources = [
+    "src/game",
+]
+test_sources = [
+    "tests",
+]
+
+requires = [
+    "django~=5.1",
+]
+test_requires = [
+    "pytest",
+]
+
+[tool.briefcase.app.game.macOS]
+universal_build = true
+requires = [
+    "toga-cocoa~=0.5.0",
+    "std-nslog~=1.0.3",
+]
+
+[tool.briefcase.app.game.linux]
+requires = [
+    "toga-gtk~=0.5.0",
+    # PyGObject 3.52.1 enforces a requirement on libgirepository-2.0-dev. This library
+    # isn't available on Debian 12/Ubuntu 22.04. If you don't need to support those (or
+    # older) releases, you can remove this version pin. See beeware/toga#3143.
+    "pygobject < 3.52.1",
+]
+
+[tool.briefcase.app.game.linux.system.debian]
+system_requires = [
+    # Needed to compile pycairo wheel
+    "libcairo2-dev",
+    # One of the following two packages are needed to compile PyGObject wheel. If you
+    # remove the pygobject pin in the requires list, you should also change to the
+    # version 2.0 of the girepository library. See beeware/toga#3143.
+    "libgirepository1.0-dev",
+    # "libgirepository-2.0-dev",
+]
+
+system_runtime_requires = [
+    # Needed to provide GTK and its GI bindings
+    "gir1.2-gtk-3.0",
+    # One of the following two packages are needed to use PyGObject at runtime. If you
+    # remove the pygobject pin in the requires list, you should also change to the
+    # version 2.0 of the girepository library. See beeware/toga#3143.
+    "libgirepository-1.0-1",
+    # "libgirepository-2.0-0",
+    # Dependencies that GTK looks for at runtime
+    "libcanberra-gtk3-module",
+    # Needed to provide WebKit2 at runtime
+    # Note: Debian 11 requires gir1.2-webkit2-4.0 instead
+    # "gir1.2-webkit2-4.1",
+]
+
+[tool.briefcase.app.game.linux.system.rhel]
+system_requires = [
+    # Needed to compile pycairo wheel
+    "cairo-gobject-devel",
+    # Needed to compile PyGObject wheel
+    "gobject-introspection-devel",
+]
+
+system_runtime_requires = [
+    # Needed to support Python bindings to GTK
+    "gobject-introspection",
+    # Needed to provide GTK
+    "gtk3",
+    # Dependencies that GTK looks for at runtime
+    "libcanberra-gtk3",
+    # Needed to provide WebKit2 at runtime
+    # "webkit2gtk3",
+]
+
+[tool.briefcase.app.game.linux.system.suse]
+system_requires = [
+    # Needed to compile pycairo wheel
+    "cairo-devel",
+    # Needed to compile PyGObject wheel
+    "gobject-introspection-devel",
+]
+
+system_runtime_requires = [
+    # Needed to provide GTK
+    "gtk3",
+    # Needed to support Python bindings to GTK
+    "gobject-introspection", "typelib(Gtk) = 3.0",
+    # Dependencies that GTK looks for at runtime
+    "libcanberra-gtk3-module",
+    # Needed to provide WebKit2 at runtime
+    # "libwebkit2gtk3", "typelib(WebKit2)",
+]
+
+[tool.briefcase.app.game.linux.system.arch]
+system_requires = [
+    # Needed to compile pycairo wheel
+    "cairo",
+    # Needed to compile PyGObject wheel
+    "gobject-introspection",
+    # Runtime dependencies that need to exist so that the
+    # Arch package passes final validation.
+    # Needed to provide GTK
+    "gtk3",
+    # Dependencies that GTK looks for at runtime
+    "libcanberra",
+    # Needed to provide WebKit2
+    # "webkit2gtk",
+]
+
+system_runtime_requires = [
+    # Needed to provide GTK
+    "gtk3",
+    # Needed to provide PyGObject bindings
+    "gobject-introspection-runtime",
+    # Dependencies that GTK looks for at runtime
+    "libcanberra",
+    # Needed to provide WebKit2 at runtime
+    # "webkit2gtk",
+]
+
+[tool.briefcase.app.game.linux.appimage]
+manylinux = "manylinux_2_28"
+
+system_requires = [
+    # Needed to compile pycairo wheel
+    "cairo-gobject-devel",
+    # Needed to compile PyGObject wheel
+    "gobject-introspection-devel",
+    # Needed to provide GTK
+    "gtk3-devel",
+    # Dependencies that GTK looks for at runtime, that need to be
+    # in the build environment to be picked up by linuxdeploy
+    "libcanberra-gtk3",
+    "PackageKit-gtk3-module",
+    "gvfs-client",
+]
+
+linuxdeploy_plugins = [
+    "DEPLOY_GTK_VERSION=3 gtk",
+]
+
+[tool.briefcase.app.game.linux.flatpak]
+flatpak_runtime = "org.gnome.Platform"
+flatpak_runtime_version = "48"
+flatpak_sdk = "org.gnome.Sdk"
+
+[tool.briefcase.app.game.windows]
+requires = [
+    "toga-winforms~=0.5.0",
+]
+
+# Mobile deployments
+[tool.briefcase.app.game.iOS]
+requires = [
+    "toga-iOS~=0.5.0",
+    "std-nslog~=1.0.3",
+]
+
+[tool.briefcase.app.game.android]
+requires = [
+    "toga-android~=0.5.0",
+]
+
+base_theme = "Theme.MaterialComponents.Light.DarkActionBar"
+
+build_gradle_dependencies = [
+    "com.google.android.material:material:1.12.0",
+    # Needed for DetailedList
+    # "androidx.swiperefreshlayout:swiperefreshlayout:1.1.0",
+    # Needed for MapView
+    # "org.osmdroid:osmdroid-android:6.1.20",
+]
+
+# Web deployments
+[tool.briefcase.app.game.web]
+requires = [
+    "toga-web~=0.5.0",
+]
+style_framework = "Shoelace v2.3"
+
+Briefcase Log:
+[23:50:20]                                                                                                                                                                dev.py:238
+           [game] Installing requirements...                                                                                                                              dev.py:238
+           Installing dev requirements... started                                                                                                                          dev.py:89
+                                                                                                                                                                   subprocess.py:838
+           >>> Running Command:                                                                                                                                    subprocess.py:838
+           >>>     /Users/kale/.local/share/virtualenvs/226_game-ghc88pkf/bin/python -u -X utf8 -m pip install --upgrade 'django~=5.1' 'toga-cocoa~=0.5.0'         subprocess.py:838
+           'std-nslog~=1.0.3' pytest                                                                                                                                                
+           >>> Working Directory:                                                                                                                                  subprocess.py:838
+           >>>     /Users/kale/Library/CloudStorage/OneDrive-CamosunCollege/Camosun/~Fall 2025/ICS 226 - Network Programming/Game Project/226_game                 subprocess.py:838
+           Requirement already satisfied: django~=5.1 in /Users/kale/.local/share/virtualenvs/226_game-ghc88pkf/lib/python3.13/site-packages (5.2.8)               subprocess.py:195
+[23:50:22] Requirement already satisfied: toga-cocoa~=0.5.0 in /Users/kale/.local/share/virtualenvs/226_game-ghc88pkf/lib/python3.13/site-packages (0.5.2)         subprocess.py:195
+           Collecting std-nslog~=1.0.3                                                                                                                             subprocess.py:195
+             Using cached std_nslog-1.0.3-py3-none-any.whl.metadata (3.6 kB)                                                                                       subprocess.py:195
+           Requirement already satisfied: pytest in /Users/kale/.local/share/virtualenvs/226_game-ghc88pkf/lib/python3.13/site-packages (9.0.1)                    subprocess.py:195
+           Requirement already satisfied: asgiref>=3.8.1 in /Users/kale/.local/share/virtualenvs/226_game-ghc88pkf/lib/python3.13/site-packages (from django~=5.1) subprocess.py:195
+           (3.11.0)                                                                                                                                                                 
+           Requirement already satisfied: sqlparse>=0.3.1 in /Users/kale/.local/share/virtualenvs/226_game-ghc88pkf/lib/python3.13/site-packages (from             subprocess.py:195
+           django~=5.1) (0.5.3)                                                                                                                                                     
+           Requirement already satisfied: fonttools<5.0.0,>=4.42.1 in /Users/kale/.local/share/virtualenvs/226_game-ghc88pkf/lib/python3.13/site-packages (from    subprocess.py:195
+           toga-cocoa~=0.5.0) (4.60.1)                                                                                                                                              
+           Requirement already satisfied: rubicon-objc<0.6.0,>=0.5.1 in /Users/kale/.local/share/virtualenvs/226_game-ghc88pkf/lib/python3.13/site-packages (from  subprocess.py:195
+           toga-cocoa~=0.5.0) (0.5.2)                                                                                                                                               
+           Requirement already satisfied: toga-core==0.5.2 in /Users/kale/.local/share/virtualenvs/226_game-ghc88pkf/lib/python3.13/site-packages (from            subprocess.py:195
+           toga-cocoa~=0.5.0) (0.5.2)                                                                                                                                               
+           Requirement already satisfied: travertino==0.5.2 in /Users/kale/.local/share/virtualenvs/226_game-ghc88pkf/lib/python3.13/site-packages (from           subprocess.py:195
+           toga-core==0.5.2->toga-cocoa~=0.5.0) (0.5.2)                                                                                                                             
+           Requirement already satisfied: iniconfig>=1.0.1 in /Users/kale/.local/share/virtualenvs/226_game-ghc88pkf/lib/python3.13/site-packages (from pytest)    subprocess.py:195
+           (2.3.0)                                                                                                                                                                  
+           Requirement already satisfied: packaging>=22 in /Users/kale/.local/share/virtualenvs/226_game-ghc88pkf/lib/python3.13/site-packages (from pytest)       subprocess.py:195
+           (25.0)                                                                                                                                                                   
+           Requirement already satisfied: pluggy<2,>=1.5 in /Users/kale/.local/share/virtualenvs/226_game-ghc88pkf/lib/python3.13/site-packages (from pytest)      subprocess.py:195
+           (1.6.0)                                                                                                                                                                  
+           Requirement already satisfied: pygments>=2.7.2 in /Users/kale/.local/share/virtualenvs/226_game-ghc88pkf/lib/python3.13/site-packages (from pytest)     subprocess.py:195
+           (2.19.2)                                                                                                                                                                 
+           Using cached std_nslog-1.0.3-py3-none-any.whl (4.8 kB)                                                                                                  subprocess.py:195
+           Installing collected packages: std-nslog                                                                                                                subprocess.py:195
+           Successfully installed std-nslog-1.0.3                                                                                                                  subprocess.py:195
+           >>> Return code: 0                                                                                                                                      subprocess.py:838
+                                                                                                                                                                   subprocess.py:838
+           Installing dev requirements... done                                                                                                                             dev.py:89
+           Saving log... started                                                                                                                                      console.py:438
+
+Main thread traceback:
+╭─────────────────────────────────────────────────────────────────────── Traceback (most recent call last) ────────────────────────────────────────────────────────────────────────╮
+│ /Users/kale/.local/share/virtualenvs/226_game-ghc88pkf/lib/python3.13/site-packages/briefcase/__main__.py:27 in main                                                             │
+│                                                                                                                                                                                  │
+│   24 │   │   │   Path.cwd() / "pyproject.toml",                                                                                                                                  │
+│   25 │   │   │   overrides=overrides,                                                                                                                                            │
+│   26 │   │   )                                                                                                                                                                   │
+│ ❱ 27 │   │   command(**options)                                                                                                                                                  │
+│   28 │   except HelpText as e:                                                                                                                                                   │
+│   29 │   │   console.info()                                                                                                                                                      │
+│   30 │   │   console.info(str(e))                                                                                                                                                │
+│                                                                                                                                                                                  │
+│ ╭──────────────────────────────────────────────────────── locals ─────────────────────────────────────────────────────────╮                                                      │
+│ │       command = <briefcase.platforms.macOS.app.macOSAppDevCommand object at 0x109198440>                                │                                                      │
+│ │       console = <briefcase.console.Console object at 0x108fb6a50>                                                       │                                                      │
+│ │ extra_cmdline = []                                                                                                      │                                                      │
+│ │       options = {'appname': None, 'update_requirements': False, 'run_app': True, 'test_mode': False, 'passthrough': []} │                                                      │
+│ │     overrides = {}                                                                                                      │                                                      │
+│ │        result = 0                                                                                                       │                                                      │
+│ ╰─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯                                                      │
+│                                                                                                                                                                                  │
+│ /Users/kale/.local/share/virtualenvs/226_game-ghc88pkf/lib/python3.13/site-packages/briefcase/commands/dev.py:240 in __call__                                                    │
+│                                                                                                                                                                                  │
+│   237 │   │   if update_requirements or not dist_info_path.exists():                                                                                                             │
+│   238 │   │   │   self.console.info("Installing requirements...", prefix=app.app_name)                                                                                           │
+│   239 │   │   │   self.install_dev_requirements(app, **options)                                                                                                                  │
+│ ❱ 240 │   │   │   write_dist_info(app, dist_info_path)                                                                                                                           │
+│   241 │   │                                                                                                                                                                      │
+│   242 │   │   if run_app:                                                                                                                                                        │
+│   243 │   │   │   if app.test_mode:                                                                                                                                              │
+│                                                                                                                                                                                  │
+│ ╭─────────────────────────────────────────────────────────────────────────────────── locals ───────────────────────────────────────────────────────────────────────────────────╮ │
+│ │                 app = <com.example.game v0.0.1 AppConfig>                                                                                                                    │ │
+│ │             appname = None                                                                                                                                                   │ │
+│ │      dist_info_path = PosixPath('/Users/kale/Library/CloudStorage/OneDrive-CamosunCollege/Camosun/~Fall 2025/ICS 226 - Network Programming/Game                              │ │
+│ │                       Project/226_game/src/game.dist-info')                                                                                                                  │ │
+│ │             options = {}                                                                                                                                                     │ │
+│ │         passthrough = []                                                                                                                                                     │ │
+│ │             run_app = True                                                                                                                                                   │ │
+│ │                self = <briefcase.platforms.macOS.app.macOSAppDevCommand object at 0x109198440>                                                                               │ │
+│ │           test_mode = False                                                                                                                                                  │ │
+│ │ update_requirements = False                                                                                                                                                  │ │
+│ ╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯ │
+│                                                                                                                                                                                  │
+│ /Users/kale/.local/share/virtualenvs/226_game-ghc88pkf/lib/python3.13/site-packages/briefcase/commands/create.py:55 in write_dist_info                                           │
+│                                                                                                                                                                                  │
+│     52 │   :param dist_info_path: The path into which the dist-info folder should be written.                                                                                    │
+│     53 │   """                                                                                                                                                                   │
+│     54 │   # Create dist-info folder, and write a minimal metadata collection.                                                                                                   │
+│ ❱   55 │   dist_info_path.mkdir(exist_ok=True)                                                                                                                                   │
+│     56 │   with (dist_info_path / "INSTALLER").open("w", encoding="utf-8") as f:                                                                                                 │
+│     57 │   │   f.write("briefcase\n")                                                                                                                                            │
+│     58 │   with (dist_info_path / "WHEEL").open("w", encoding="utf-8") as f:                                                                                                     │
+│                                                                                                                                                                                  │
+│ ╭─────────────────────────────────────────────────────────────────────────────────── locals ───────────────────────────────────────────────────────────────────────────────────╮ │
+│ │            app = <com.example.game v0.0.1 AppConfig>                                                                                                                         │ │
+│ │ dist_info_path = PosixPath('/Users/kale/Library/CloudStorage/OneDrive-CamosunCollege/Camosun/~Fall 2025/ICS 226 - Network Programming/Game                                   │ │
+│ │                  Project/226_game/src/game.dist-info')                                                                                                                       │ │
+│ ╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯ │
+│                                                                                                                                                                                  │
+│ /opt/homebrew/Cellar/python@3.13/3.13.7/Frameworks/Python.framework/Versions/3.13/lib/python3.13/pathlib/_local.py:722 in mkdir                                                  │
+│                                                                                                                                                                                  │
+│   719 │   │   Create a new directory at this given path.                                                                                                                         │
+│   720 │   │   """                                                                                                                                                                │
+│   721 │   │   try:                                                                                                                                                               │
+│ ❱ 722 │   │   │   os.mkdir(self, mode)                                                                                                                                           │
+│   723 │   │   except FileNotFoundError:                                                                                                                                          │
+│   724 │   │   │   if not parents or self.parent == self:                                                                                                                         │
+│   725 │   │   │   │   raise                                                                                                                                                      │
+│                                                                                                                                                                                  │
+│ ╭────────────────────────────────────────────────────────────────────────────────── locals ──────────────────────────────────────────────────────────────────────────────────╮   │
+│ │ exist_ok = True                                                                                                                                                            │   │
+│ │     mode = 511                                                                                                                                                             │   │
+│ │  parents = False                                                                                                                                                           │   │
+│ │     self = PosixPath('/Users/kale/Library/CloudStorage/OneDrive-CamosunCollege/Camosun/~Fall 2025/ICS 226 - Network Programming/Game Project/226_game/src/game.dist-info') │   │
+│ ╰────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯   │
+╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+FileNotFoundError: [Errno 2] No such file or directory: '/Users/kale/Library/CloudStorage/OneDrive-CamosunCollege/Camosun/~Fall 2025/ICS 226 - Network Programming/Game Project/226_game/src/game.dist-info'

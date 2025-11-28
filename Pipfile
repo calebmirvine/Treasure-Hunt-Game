@@ -9,6 +9,8 @@ coverage = "*"
 djangorestframework = "*"
 django-cors-headers = "*"
 django = "*"
+briefcase = "*"
+toga = "*"
 
 [dev-packages]
 flaky = "*"
