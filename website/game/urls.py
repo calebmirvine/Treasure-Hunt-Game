@@ -8,7 +8,8 @@ router.register(r'players', views.PlayerView, 'player')
 
 urlpatterns = [
     path('', views.game, name='game'),
-    path('create', views.create_board, name='create'),
+    
+    path('lobby', views.index, name='lobby'), #lobby is index
     path('pick/<str:name>/<int:row>/<int:col>', views.pick, name='pick'),
     path('', include(router.urls)),
 ]

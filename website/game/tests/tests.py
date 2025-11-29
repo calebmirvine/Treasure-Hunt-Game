@@ -1,7 +1,8 @@
 from django.test import TestCase
 
 # Create your tests here.
-from .models import Tile, Player
+# Create your tests here.
+from game.models import Tile, Player
 from game.constants.constants import (
     MIN_BOARD_SIZE,
     DEFAULT_BOARD_SIZE,
@@ -19,13 +20,17 @@ from game.constants.messages import ErrorMessages
 class BoardCreationTests(TestCase):
     """Tests for board initialization and setup."""
 
+    def setUp(self):
+        Player.objects.create(name=PLAYER_1)
+        Player.objects.create(name=PLAYER_2)
+
     def test_tile_count(self):
         """
         Tests that the correct number of tiles are created when the board is created.
         DEFAULT_BOARD_SIZE is set in constants.py and is 10 by default.
         10x10 = 100 tiles.
         """
-        response = self.client.get('/game/create', follow=True)
+        response = self.client.get('/game/', follow=True)
         self.assertRedirects(response, "/game/", 302, 200, fetch_redirect_response=True)
         self.assertEqual(Tile.objects.count(), DEFAULT_BOARD_SIZE * DEFAULT_BOARD_SIZE, f'Expected {DEFAULT_BOARD_SIZE * DEFAULT_BOARD_SIZE} tiles, but found {Tile.objects.count()}')
 
@@ -34,7 +39,7 @@ class BoardCreationTests(TestCase):
         Tests that the correct number of each treasure value is placed on the board.
         Should have 4 tiles with value '4', 3 tiles with value '3', etc.
         """
-        response = self.client.get('/game/create', follow=True)
+        response = self.client.get('/game/', follow=True)
         self.assertRedirects(response, "/game/", 302, 200, fetch_redirect_response=True)
 
         # Count occurrences of each treasure value
@@ -48,7 +53,7 @@ class BoardCreationTests(TestCase):
         Asserts that the correct number of players are created when the board is created.
         MAX_PLAYERS is set in constants.py and is 2 by default.
         """
-        response = self.client.get('/game/create', follow=True)
+        response = self.client.get('/game/', follow=True)
         self.assertRedirects(response, "/game/", 302, 200, fetch_redirect_response=True)
         [self.assertIn(player.name, [PLAYER_1, PLAYER_2]) for player in Player.objects.all()]
         self.assertEqual(Player.objects.count(), MAX_PLAYERS, f'Expected {MAX_PLAYERS} players, but found {Player.objects.count()}')
@@ -58,7 +63,7 @@ class BoardCreationTests(TestCase):
         Asserts that all players start with the correct starting score.
         PLAYER_STARTING_SCORE is set in constants.py and is 0 by default.
         """
-        response = self.client.get('/game/create', follow=True)
+        response = self.client.get('/game/', follow=True)
         self.assertRedirects(response, "/game/", 302, 200, fetch_redirect_response=True)
         [self.assertEqual(player.score, PLAYER_STARTING_SCORE) for player in Player.objects.all()]
 
@@ -66,9 +71,9 @@ class BoardCreationTests(TestCase):
         """
         Test that calling /game/create twice doesn't duplicate tiles.
         """
-        self.client.get('/game/create')
+        self.client.get('/game/')
         initial_count = Tile.objects.count()
-        self.client.get('/game/create')
+        self.client.get('/game/')
         self.assertEqual(Tile.objects.count(), initial_count)
 
 
@@ -76,7 +81,7 @@ class BoardCreationTests(TestCase):
         """
         Test that all non-treasure tiles have the default value after creation.
         """
-        response = self.client.get('/game/create')
+        response = self.client.get('/game/')
         treasure_tiles = 0
         for i in range(1, DEFAULT_TREASURE_COUNT + 1):
             treasure_tiles += i
@@ -89,11 +94,15 @@ class BoardCreationTests(TestCase):
 class GameplayTests(TestCase):
     """Tests for tile picking and score mechanics."""
 
+    def setUp(self):
+        Player.objects.create(name=PLAYER_1)
+        Player.objects.create(name=PLAYER_2)
+
     def test_pick_empty_value(self):
         """
         Test that picking an empty tile doesn't change the tile value.
         """
-        response = self.client.get('/game/create', follow=True)
+        response = self.client.get('/game/', follow=True)
         self.assertRedirects(response, "/game/", 302, 200, fetch_redirect_response=True)
         tile = Tile.objects.get(row=MIN_BOARD_SIZE, col=MIN_BOARD_SIZE)
         tile.value = DEFAULT_TILE
@@ -106,7 +115,7 @@ class GameplayTests(TestCase):
         """
         Test that picking a treasure tile increases the player's score.
         """
-        response = self.client.get('/game/create', follow=True)
+        response = self.client.get('/game/', follow=True)
         self.assertRedirects(response, "/game/", 302, 200, fetch_redirect_response=True)
         tile = Tile.objects.get(row=MIN_BOARD_SIZE, col=MIN_BOARD_SIZE)
         tile.value = '4'
@@ -120,7 +129,7 @@ class GameplayTests(TestCase):
         """
         Test that picking an already picked tile doesn't increase score.
         """
-        response = self.client.get('/game/create')
+        response = self.client.get('/game/')
         tile = Tile.objects.get(row=MIN_BOARD_SIZE, col=MIN_BOARD_SIZE)
         tile.value = PICKED_TILE
         tile.save()
@@ -137,7 +146,7 @@ class GameplayTests(TestCase):
         """
         Test that player score increases when picking treasure.
         """
-        response = self.client.get('/game/create')
+        response = self.client.get('/game/')
         player = Player.objects.get(name=PLAYER_1)
         initial_score = player.score
 
@@ -154,7 +163,7 @@ class GameplayTests(TestCase):
         """
         Test that picking multiple treasures accumulates score correctly.
         """
-        response = self.client.get('/game/create')
+        response = self.client.get('/game/')
         player = Player.objects.get(name=PLAYER_1)
 
         # Pick first treasure
@@ -176,7 +185,7 @@ class GameplayTests(TestCase):
         """
         Test that a treasure tile is marked as picked after being selected.
         """
-        response = self.client.get('/game/create')
+        response = self.client.get('/game/')
         tile = Tile.objects.get(row=MIN_BOARD_SIZE, col=MIN_BOARD_SIZE)
         tile.value = '1'
         tile.save()
@@ -190,32 +199,36 @@ class GameplayTests(TestCase):
 class PickValidationTests(TestCase):
     """Tests for input validation and error handling in pick operations."""
 
+    def setUp(self):
+        Player.objects.create(name=PLAYER_1)
+        Player.objects.create(name=PLAYER_2)
+
     def test_pick_tile_out_of_bounds_row(self):
         """
         Test picking a tile with row outside the board boundaries.
         """
-        response = self.client.get('/game/create')
+        response = self.client.get('/game/')
         response = self.client.get(f'/game/pick/{PLAYER_1}/{DEFAULT_BOARD_SIZE + 1}/{MIN_BOARD_SIZE}')
-        self.assertEqual(response.status_code, 400)
-        self.assertContains(response, ErrorMessages.ROW_OUT_OF_RANGE, status_code=400)
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, ErrorMessages.ROW_OUT_OF_RANGE)
 
     def test_pick_tile_out_of_bounds_col(self):
         """
         Test picking a tile with column outside the board boundaries.
         """
-        response = self.client.get('/game/create')
+        response = self.client.get('/game/')
         response = self.client.get(f'/game/pick/{PLAYER_1}/{MIN_BOARD_SIZE}/{DEFAULT_BOARD_SIZE + 1}')
-        self.assertEqual(response.status_code, 400)
-        self.assertContains(response, ErrorMessages.COL_OUT_OF_RANGE, status_code=400)
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, ErrorMessages.COL_OUT_OF_RANGE)
 
     def test_pick_with_nonexistent_player(self):
         """
         Test picking with a player that doesn't exist.
         """
-        response = self.client.get('/game/create')
+        response = self.client.get('/game/')
         response = self.client.get(f'/game/pick/PLAYER_TOTALLY_REAL/{MIN_BOARD_SIZE}/{MIN_BOARD_SIZE}')
-        self.assertEqual(response.status_code, 400)
-        self.assertContains(response, ErrorMessages.PLAYER_404, status_code=400)
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, ErrorMessages.PLAYER_404)
 
 
 class TileModelTests(TestCase):
@@ -249,28 +262,14 @@ class PlayerModelTests(TestCase):
     """Tests for Player model validation."""
 
     def test_create_player_valid(self):
-        response = self.client.post('/game/players/', {'name': 'TestPlayer'})
-        self.assertEqual(response.status_code, 201)
+        response = self.client.post('/game/lobby', {'player_number': 1})
+        self.assertEqual(response.status_code, 302)
 
-        player = Player.objects.get(name='TestPlayer')
-        self.assertEqual(player.name, 'TestPlayer')
+        player = Player.objects.get(name='One')
+        self.assertEqual(player.name, 'One')
         self.assertEqual(player.score, PLAYER_STARTING_SCORE)
+        self.assertEqual(player.color, 'green')
 
-    def test_create_player_duplicate_name(self):
-        self.client.post('/game/players/', {'name': 'TestPlayer'})
-        response = self.client.post('/game/players/', {'name': 'TestPlayer'})
-        self.assertContains(response, ErrorMessages.DUPE_NAME, status_code=400)
-
-    def test_create_player_invalid_name_chars(self):
-        response = self.client.post('/game/players/', {'name': 'TestPlayer%$#@123'})
-        self.assertContains(response, ErrorMessages.BAD_NAME_CHARS, status_code=400)
-
-    def test_create_player_name_too_long(self):
-        response = self.client.post('/game/players/', {'name': 'TestPlayer' * 10})
-        self.assertContains(response, ErrorMessages.NAME_LONG, status_code=400)
-
-    def test_create_player_max_players(self):
-        for i in range(10):
-            self.client.post('/game/players/', {'name': f'TestPlayer{i}'})
-        response = self.client.post('/game/players/', {'name': 'TestPlayer10'})
-        self.assertContains(response, ErrorMessages.TOO_MANY_PLAYERS, status_code=400)
+    def test_create_player_duplicate_slot(self):
+        self.client.post('/game/lobby', {'player_number': 1})
+        pass

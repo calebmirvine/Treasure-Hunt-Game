@@ -154,6 +154,14 @@ main {
     transform: scale(0.98);
 }
 
+.btn:disabled,
+.btn.btn-secondary {
+    background: var(--grad-secondary);
+    color: #555;
+    cursor: not-allowed;
+    box-shadow: none;
+}
+
 /* Top Shine */
 .btn:before {
     content: '';

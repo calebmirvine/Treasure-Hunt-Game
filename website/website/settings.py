@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'corsheaders',
     'rest_framework',
     'game.apps.GameConfig',
+    'colorfield',
 ]
 
 MIDDLEWARE = [

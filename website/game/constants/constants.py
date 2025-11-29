@@ -11,3 +11,4 @@ PLAYER_1 = "One"
 PLAYER_2 = "Two"
 PICKED_P1 = 'G'
 PICKED_P2 = 'R' 
+MIN_PLAYERS = 2

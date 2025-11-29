@@ -1,0 +1,49 @@
+{% extends "base/base.html" %}
+
+{% block title %}Choose Initial Players{% endblock %}
+{% block header %}Choose Initial Players{% endblock %}
+{% block content %}
+    <div class="text-center mt-5">
+
+        <div class="row">
+            <div class="col-md-6">
+                <h3>Add New Player</h3>
+                <form action="{% url 'lobby' %}" method="post" class="d-flex flex-column align-items-center">
+                    {% csrf_token %}
+                    <button type="submit" name="player_number" value="1" class="btn btn-success mb-3"
+                        {% if p1_exists %}disabled{% endif %}>
+                        Join as Player 1
+                    </button>
+                    <button type="submit" name="player_number" value="2" class="btn btn-danger" 
+                        {% if p2_exists %}disabled{% endif %}>
+                        Join as Player 2
+                    </button>
+                </form>
+            </div>
+            <div class="col-md-6">
+                <h3>Select Player</h3>
+                {% if players %}
+                    <ul class="list-group">
+                        {% for player in players %}
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                <span class="{% if forloop.counter == 1 %}text-p-one{% elif forloop.counter == 2 %}text-p-two{% endif %}">
+                                    {{ player.name }}
+                                </span>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                {% else %}
+                    <p>No players added yet.</p>
+                {% endif %}
+            </div>
+        </div>
+
+        <div class="mt-5">
+            {% if players.count >= MIN_PLAYERS %}
+                <a href="{% url 'game' %}" class="btn btn-success btn-lg">Start Game</a>
+            {% else %}
+                <button class="btn btn-secondary btn-lg" disabled>Start Game (Need {{ MIN_PLAYERS }} players)</button>
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}

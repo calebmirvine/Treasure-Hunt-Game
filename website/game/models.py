@@ -77,10 +77,15 @@ class Player(models.Model):
         validate_max_players,
     ])
     score = models.IntegerField(default=PLAYER_STARTING_SCORE, editable=False)
+    color = models.CharField(max_length=20, default='blue')
+    player_number = models.IntegerField(default=1, validators=[
+        MinValueValidator(1),
+        MinValueValidator(MAX_PLAYERS)
+    ])
 
     @classmethod
-    def create_player(cls, name, score):
-        model = cls(name=name, score=score)
+    def create_player(cls, name, score, player_number=1, color='blue'):
+        model = cls(name=name, score=score, player_number=player_number, color=color)
         return model
 
     def __str__(self):
