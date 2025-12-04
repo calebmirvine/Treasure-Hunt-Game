@@ -77,6 +77,7 @@ class Tile(models.Model):
     @classmethod
     def create_tile(cls, row, col, value):
         model = cls(row=row, col=col, value=value)
+
         return model
 
     @classmethod
@@ -89,6 +90,11 @@ class Tile(models.Model):
     def __str__(self):
         return f'Row: {self.row}, Col: {self.col} | Value: {self.value}'
 
+import random
+
+def get_random_color():
+    return "#{:06x}".format(random.randint(0, 0xFFFFFF))
+
 class Player(models.Model):
     name = models.CharField(max_length=MAX_PLAYER_NAME_LENGTH, unique=True, validators=[
         validate_player_name_length,
@@ -97,8 +103,8 @@ class Player(models.Model):
         validate_max_players,
     ])
     score = models.IntegerField(default=PLAYER_STARTING_SCORE, editable=False)
-    color = ColorField(default='#0000FF')
-    player_number = models.IntegerField(default=1, validators=[
+    color = ColorField(default=get_random_color)
+    player_number = models.IntegerField(default=1, unique=True, validators=[
         MinValueValidator(1),
         MaxValueValidator(MAX_PLAYERS)
     ])

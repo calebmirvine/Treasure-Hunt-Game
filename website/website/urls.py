@@ -17,7 +17,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from rest_framework import routers
-from game.views.api import TileView, PlayerView
+from game.views.views_api import TileView, PlayerView
 
 """
 This code specifies the URL path for the API. This was the final step that completes the building of the API.
@@ -29,7 +29,8 @@ router.register(r'players', PlayerView, 'player')
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('game/', include('game.urls')),
+    path('', include('game.urls')),
     path('api/', include(router.urls)),
 ]
 
-handler404 = 'game.views.errors.custom_404'
+handler404 = 'game.views.views_errors.custom_404'

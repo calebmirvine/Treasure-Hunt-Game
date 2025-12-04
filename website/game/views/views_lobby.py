@@ -12,10 +12,26 @@ def index(request: HttpRequest) -> HttpResponse:
             name = (PLAYER_1 if player_number == 1 else PLAYER_2)
             #Security check after validation
             color = form.cleaned_data['color']
-            
-            Player.objects.create(name=name, player_number=player_number, color=color)
-            return redirect('lobby')
+
+            try:
+                Player.objects.create(name=name, player_number=player_number, color=color)
+                
+                response = redirect('game')
+                #Cookie to remember player 
+                response.set_cookie('player_name', name)
+                return response
+            except Exception:
+                # If player already exists (race condition), just redirect to lobby
+                # The page will reload and show the button as disabled/joined
+                return redirect('lobby')
     else:
+        # Check if player cookie exists
+        player_name = request.COOKIES.get('player_name')
+        if player_name:
+            # Verify player actually exists in DB
+            if Player.objects.filter(name=player_name).exists():
+                return redirect('game')
+        
         form = PlayerForm()
     
     players = Player.objects.all()
@@ -25,7 +41,6 @@ def index(request: HttpRequest) -> HttpResponse:
     return render(request, 'game/index.html', {
         'form': form,
         'players': players,
-        'MIN_PLAYERS': MIN_PLAYERS,
         'p1_exists': p1_exists,
         'p2_exists': p2_exists
     })

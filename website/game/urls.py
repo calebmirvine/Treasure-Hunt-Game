@@ -1,8 +1,9 @@
 from django.urls import path, include
 from rest_framework import routers
-from game.views.api import TileView, PlayerView
-from game.views.lobby import index
-from game.views.gameplay import game, pick, reset_game
+from game.views.views_api import TileView, PlayerView
+from game.views.views_lobby import index
+from game.views.views_gameplay import game, pick, reload_board
+from game.views.views_game_control import reset_game
 
 #RESTful actions
 router = routers.DefaultRouter()
