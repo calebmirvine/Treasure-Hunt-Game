@@ -29,6 +29,18 @@ def index(request: HttpRequest) -> HttpResponse:
                 with transaction.atomic():
                     Player.objects.create(name=name, player_number=player_number, color=color)
                 
+                from channels.layers import get_channel_layer
+                from asgiref.sync import async_to_sync
+                
+                channel_layer = get_channel_layer()
+                async_to_sync(channel_layer.group_send)(
+                    "game_default",
+                    {
+                        "type": "lobby_update",
+                        "message": "Player Joined"
+                    }
+                )
+
                 response = redirect('game')
                 response.set_cookie('player_name', name)
                 return response
@@ -49,5 +61,6 @@ def index(request: HttpRequest) -> HttpResponse:
         'form': form,
         'players': players,
         'p1_exists': p1_exists,
-        'p2_exists': p2_exists
+        'p2_exists': p2_exists,
+        'game_full': p1_exists and p2_exists
     })

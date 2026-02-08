@@ -10,8 +10,8 @@ It is now built using **Django** for the backend and web interface, and utilizes
 
 ## Features
 
-*   **Multiplayer Gameplay**: Supports 2 players competing to find treasures on a grid.
-*   **Web Interface**: Responsive web-based game board.
+*   **Real-time Updates**: WebSockets (Django Channels) for instant game state synchronization.
+*   **Web Interface**: Responsive web-based game board with Snow Leopard aesthetic.
 *   **Native App Support**: Can be packaged as a native app using BeeWare's Briefcase.
 *   **REST API**: Exposes game state and actions via a RESTful API.
 *   **CI/CD**: Automated testing and linting via GitHub Actions.
@@ -20,6 +20,8 @@ It is now built using **Django** for the backend and web interface, and utilizes
 
 *   **Python 3.12**
 *   **Django 5.1**
+*   **Django Channels & Daphne** (WebSockets)
+*   **HTMX** (Frontend interactivity)
 *   **Django REST Framework**
 *   **BeeWare (Toga & Briefcase)**
 *   **Pytest** (Testing)
@@ -61,13 +63,22 @@ chmod +x build.sh
 
 ### Running the Web Application
 
-To start the Django development server:
+To start the Django development server with Daphne (for WebSockets):
 
 ```bash
-pipenv run website/manage.py runserver
+pipenv run python website/manage.py runserver
 ```
 
 Access the game at `http://127.0.0.1:8000/`.
+
+### Deployment (DigitalOcean App Platform)
+
+1.  **Procfile**: Included in the root directory for Daphne support.
+2.  **Environment Variables**:
+    *   `DJANGO_SECRET_KEY`: Set a strong random string.
+    *   `DEBUG`: `False`
+    *   `DJANGO_ALLOWED_HOSTS`: `.ondigitalocean.app`
+    *   `DATABASE_URL`: (Auto-provisioned by DigitalOcean)
 
 ### Running Tests
 
@@ -101,8 +112,8 @@ briefcase build
 *   `website/game/tests/`: Test suite split into board, gameplay, and model tests.
 *   `pyproject.toml`: Configuration for Briefcase and project metadata.
 *   `Pipfile` & `Pipfile.lock`: Dependency definitions.
+*   `Procfile`: Deployment configuration.
 
 ## Future Plans
 
-*   **WebSockets**: Implement real-time game state updates using Django Channels or similar technology to replace polling.
 *   **Mobile-Friendly Interface**: Enhance the Toga native application GUI to be more responsive and touch-friendly for mobile devices.

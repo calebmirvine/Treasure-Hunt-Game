@@ -29,6 +29,8 @@ requires = [
     "dj-database-url",
     "django-colorfield",
     "whitenoise",
+    "channels",
+    "daphne",
 ]
 test_requires = [
     "pytest",

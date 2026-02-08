@@ -8,6 +8,8 @@ from game.constants.constants import (
     DEFAULT_TREASURE_COUNT,
 )
 import random
+from channels.layers import get_channel_layer
+from asgiref.sync import async_to_sync
 
 @transaction.atomic
 def reset_game(request: HttpRequest) -> HttpResponse:
@@ -19,6 +21,22 @@ def reset_game(request: HttpRequest) -> HttpResponse:
     Player.objects.all().delete()
     response = HttpResponseRedirect('/lobby')
     response.delete_cookie('player_name')
+
+    channel_layer = get_channel_layer()
+    async_to_sync(channel_layer.group_send)(
+        "game_default",
+        {
+            "type": "game_message",
+            "message": "Game Reset"
+        }
+    )
+    async_to_sync(channel_layer.group_send)(
+        "game_default",
+        {
+            "type": "lobby_update",
+            "message": "Game Reset"
+        }
+    )
     return response
 
 @transaction.atomic
@@ -65,4 +83,13 @@ def start_game(request: HttpRequest, size: int = DEFAULT_BOARD_SIZE, treasure : 
                 placed = True
                 t_count -= 1
     
+    channel_layer = get_channel_layer()
+    async_to_sync(channel_layer.group_send)(
+        "game_default",
+        {
+            "type": "game_message",
+            "message": "New Game Started"
+        }
+    )
+
     return redirect('game')

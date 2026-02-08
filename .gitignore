@@ -9,3 +9,12 @@ db.sqlite3
 /.idea/inspectionProfiles/profiles_settings.xml
 /.idea/vcs.xml
 /.idea/workspace.xml
+
+# Build artifacts
+build/
+dist/
+*.egg-info/
+.DS_Store
+venv/
+.env
+staticfiles/

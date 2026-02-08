@@ -10,6 +10,7 @@
     
     {% endblock %}
     <script src="https://unpkg.com/htmx.org@1.9.10"></script>
+    <script src="https://unpkg.com/htmx.org@1.9.10/dist/ext/ws.js"></script>
 </head>
 <body>
     <div class="container">
@@ -25,5 +26,6 @@
             <p><small>ICS 226 - Network Programming</small></p>
         </footer>
     </div>
+    {% block extra_js %}{% endblock %}
 </body>
 </html>

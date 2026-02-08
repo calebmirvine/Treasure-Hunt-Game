@@ -1,0 +1,39 @@
+<div id="player-slots" 
+     class="player-slots"
+     >
+    <!-- Player 1 Slot -->
+    <div class="player-slot">
+        <h3>Player 1</h3>
+        {% if p1_exists %}
+            {% for player in players %}
+                {% if player.player_number == 1 %}
+                    <button type="button" class="btn" style="background: {{ player.color }}; cursor: default;">
+                        {{ player.name }} Joined
+                    </button>
+                {% endif %}
+            {% endfor %}
+        {% else %}
+            <button type="submit" name="player_number" value="1" class="btn">
+                Join as Player 1
+            </button>
+        {% endif %}
+    </div>
+
+    <!-- Player 2 Slot -->
+    <div class="player-slot">
+        <h3>Player 2</h3>
+        {% if p2_exists %}
+            {% for player in players %}
+                {% if player.player_number == 2 %}
+                    <button type="button" class="btn" style="background: {{ player.color }}; cursor: default;">
+                        {{ player.name }} Joined
+                    </button>
+                {% endif %}
+            {% endfor %}
+        {% else %}
+            <button type="submit" name="player_number" value="2" class="btn">
+                Join as Player 2
+            </button>
+        {% endif %}
+    </div>
+</div>

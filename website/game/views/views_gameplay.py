@@ -11,6 +11,8 @@ from game.constants.constants import (
 )
 from game.constants.messages import ErrorMessages
 from .views_game_control import start_game
+from channels.layers import get_channel_layer
+from asgiref.sync import async_to_sync
 
 def get_masked_board_state(tiles):
     board = []
@@ -52,30 +54,53 @@ def game(request: HttpRequest) -> HttpResponse | None:
         return redirect('lobby')
     
     # Check if we are waiting for players
+    return build_game_context(current_player_name)
+
+def build_game_context(current_player_name):
     players = Player.objects.all()
     if players.count() < MIN_PLAYERS:
-        return render(request, 'game/game.html', {
+        return {
             'waiting': True,
             'player_list': players,
             'current_player_name': current_player_name
-        })
-
-    #if the game hasn't been created yet, redirect to lobby to wait for players
-    if not Tile.objects.exists():
-        if Player.objects.count() >= MIN_PLAYERS:
-            return start_game(request)
-        return redirect('lobby')
+        }
 
     tiles = Tile.objects.all().order_by('row', 'col')
     board = get_masked_board_state(tiles)
 
-    context = {
+    return {
         'player_list': players,
         'board': board,
         'game_message': 'Pick a tile to start the game',
         'current_player_name': current_player_name,
         'waiting': False,
     }
+
+def game(request: HttpRequest) -> HttpResponse | None:
+    """
+    This function displays the game page.
+    It first checks if the game has been created, if not it redirects to create.
+    Then it gets all the players and tiles, and creates a board.
+    :param request: HttpRequest
+    :return: HttpResponse
+    """
+
+    current_player_name = request.COOKIES.get('player_name')
+    if not current_player_name:
+        return redirect('lobby')
+    
+    #if the game hasn't been created yet, redirect to lobby to wait for players
+    if not Tile.objects.exists():
+        if Player.objects.count() >= MIN_PLAYERS:
+            return start_game(request)
+        # Check if just waiting
+        if Player.objects.count() < MIN_PLAYERS:
+             # Just return waiting context
+             pass
+        else:
+             return redirect('lobby')
+
+    context = build_game_context(current_player_name)
     return render(request, 'game/game.html', context)
 
 
@@ -138,6 +163,19 @@ def pick(request: HttpRequest, name: str = None, row: int = None, col: int = Non
                     message = f'Player {player.name} found the treasure! {FOUND_TREASURE} Worth {value} points! Total Score: {player.score}'
                     tile.picked_by = player
                     tile.save()
+            
+            # Broadcast update
+            channel_layer = get_channel_layer()
+            async_to_sync(channel_layer.group_send)(
+                "game_default",
+                {
+                    "type": "game_message",
+                    "message": message
+                }
+            )
+
+            if request.headers.get('HX-Request') or request.headers.get('Hx-Request'):
+                 return HttpResponse(status=204)
 
     players = Player.objects.all()
     tiles = Tile.objects.all().order_by('row', 'col')

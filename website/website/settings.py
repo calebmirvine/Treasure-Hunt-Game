@@ -1,3 +1,8 @@
+import os
+import sys
+import dj_database_url
+from django.core.management.utils import get_random_secret_key
+
 """
 Django settings for website project.
 
@@ -20,21 +25,22 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
 
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'tyK^.WN5RQc]64p9;Y4~Xz1/]n:vU([.$0zyAYVo8:^#[JmOf6'
 
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = 'RENDER' not in environ
+SECRET_KEY = os.getenv("DJANGO_SECRET_KEY", get_random_secret_key())
+
+DEVELOPMENT_MODE = os.getenv("DEVELOPMENT_MODE", "False") == "True"
+
+
 
 #Allow all hosts for now
-ALLOWED_HOSTS = ['localhost', '127.0.0.1', '*']
-RENDER_EXTERNAL_HOSTNAME = environ.get('RENDER_EXTERNAL_HOSTNAME')
-if RENDER_EXTERNAL_HOSTNAME:
-    ALLOWED_HOSTS.append(RENDER_EXTERNAL_HOSTNAME)
+ALLOWED_HOSTS = os.getenv("DJANGO_ALLOWED_HOSTS", "127.0.0.1,localhost").split(",")
+
+DEBUG = os.getenv("DEBUG", "False") == "True"
 
 # Application definition
 
 INSTALLED_APPS = [
+    'daphne',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -46,6 +52,7 @@ INSTALLED_APPS = [
     'game.apps.GameConfig',
     #Custom Color Field
     'colorfield',
+    'channels',
 ]
 
 MIDDLEWARE = [
@@ -83,18 +90,31 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'website.wsgi.application'
+ASGI_APPLICATION = 'website.asgi.application'
+
+CHANNEL_LAYERS = {
+    "default": {
+        "BACKEND": "channels.layers.InMemoryChannelLayer"
+    }
+}
 
 
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        #Altered for briefcase to work
-        'NAME': Path(environ.get('DJANGO_DB_PATH', BASE_DIR / 'db.sqlite3')),
+if DEVELOPMENT_MODE is True:
+    DATABASES = {
+        "default": {
+            "ENGINE": "django.db.backends.sqlite3",
+            "NAME": os.path.join(BASE_DIR, "db.sqlite3"),
+        }
     }
-}
+elif len(sys.argv) > 0 and sys.argv[1] != 'collectstatic':
+    if os.getenv("DATABASE_URL", None) is None:
+        raise Exception("DATABASE_URL environment variable not defined")
+    DATABASES = {
+        "default": dj_database_url.parse(os.environ.get("DATABASE_URL")),
+    }
 
 
 # Password validation
@@ -158,4 +178,4 @@ if not DEBUG and config:
 
 if not DEBUG:
     STATIC_ROOT = path.join(BASE_DIR, 'staticfiles')
-    GTATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+    STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
